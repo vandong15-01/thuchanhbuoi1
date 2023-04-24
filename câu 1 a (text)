@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bai1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author ASUS
+ */
+import java.util.Scanner;
+public class Test {
+    static Scanner sc = new Scanner(System.in);
+    //tạo phương thức nhập thông tin cho xe
+    @SuppressWarnings("empty-statement")
+      static void nhapXe(Vehicle xe){
+            System.out.print("Nhap ma xe: ");
+            xe.setMaXe(sc.nextInt());sc.nextLine();
+            System.out.print("Nhap ten chu xe: ");
+            xe.setChuXe(sc.nextLine());
+            System.out.print("Nhap dung tich xe: ");
+            xe.setDungTich(sc.nextInt());
+            System.out.print("Nhap gia tri xe: ");
+            xe.setTriGia(sc.nextDouble());;sc.nextLine();
+            System.out.print("Mo ta: ");
+            xe.setMoTa(sc.nextLine());
+        }
+        //tạo phương thức main để chạy các phương thức khác ở class Vehicle
+    public static void main(String[] args) {
+        Vehicle v[]= null;//mang chua xe
+        int a,n=0;
+        boolean flag = true;
+        //sử dụng switch case để tạo menu cho chương trình
+        do{
+            System.out.println("Ban chon lam gi!!!");
+            System.out.println("1.Tao cac doi tuong xe va nhap thong tin \n"+
+                    "2.Xuat bang ke khai tien thue cua cac xe.\n"+
+                    "Nhap so khac de thoat");
+            a =sc.nextInt();
+            switch (a){
+                case 1:
+                    System.out.print("Nhap so luong xe ban muon khai bao thue: ");
+                    n=sc.nextInt();
+                    //khai báo mảng v[] để chứa số lượng xe
+                    v= new Vehicle[n];
+                    for (int i = 0; i < n; i++) {
+                        System.out.println("Xe thu " + (i+1));
+                        v[i] = new Vehicle();
+                        nhapXe(v[i]);
+                    }
+                    break;
+                case 2:
+                    System.out.printf("%5s %5s %5s %10s %10s %8s \n","Ma xe","Chu xe","Dung tich","Tri gia","mo ta","Thue");
+                    for (int i = 0; i < n; i++) {
+                        v[i].inThue();
+                    }
+                    break;
+                default:
+                    System.out.println("bye");
+                    flag=false;
+                    break;
+            }
+        }while (flag);
+    }
+}
